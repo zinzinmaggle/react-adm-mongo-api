@@ -40,7 +40,8 @@ module.exports = async (req, res) => {
 
   // Select the users collection from the database
   const users = await collection.find({}).toArray()
-  res.set("x-total-count", await users.count());
+  res.header('Access-Control-Expose-Headers', 'X-Total-Count');
+  res.set("x-total-count", users.count());
   // Respond with a JSON string of all users in the collection
   res.status(200).json({ users })
 }
