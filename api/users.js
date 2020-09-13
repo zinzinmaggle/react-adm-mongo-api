@@ -36,9 +36,11 @@ module.exports = async (req, res) => {
   // Select the "users" collection from the database
   const collection = await db.collection('users')
 
+  const { end = 'World', order='ASC',sort='id',start =''} = req.query
+
   // Select the users collection from the database
   const users = await collection.find({}).toArray()
-
+  res.set('X-Total-Count', users.length)
   // Respond with a JSON string of all users in the collection
   res.status(200).json({ users })
 }
