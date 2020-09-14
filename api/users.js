@@ -42,5 +42,5 @@ module.exports = async (req, res) => {
   const users = await collection.find({}).toArray()
   res.setHeader("x-total-count", users.length);
   // Respond with a JSON string of all users in the collection
-  res.status(200).json({ data : {users}, total :  users.length })
+  res.status(200).json({ data : users, total :  users.length })
 }
