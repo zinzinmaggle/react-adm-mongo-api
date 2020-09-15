@@ -43,18 +43,18 @@ module.exports = async (req, res) => {
   
   switch(req.method){
     case 'GET':
-        result = await collection.findOne({id : req.query.id});
+        result = await collection.findOne({'_id' : req.query.id});
+        res.status(200).json(result);
       break;
     case 'PUT':
-      result =  await collection.update({id : req.query.id},req.body);
+      result =  await collection.update({'_id' : req.query.id}, req.body);
+      res.redirect('/user')
       break;
     case 'DELETE':
       result = await collection.insert(req.body)
+      res.redirect('/user')
       break;
   }
-
-  res.status(200).json(result)
-
 
   // Select the users collection from the database
   // Respond with a JSON string of all users in the collection
