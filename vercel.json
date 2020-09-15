@@ -1,7 +1,9 @@
 {
   "name": "react-adm-mongodb-api",
   "version": 2,
-  "rewrites": [{ "source": "/users/:id", "destination": "/users" }],
+  "routes": [
+    { "src": "/users/(?<id>[^/]*)", "dest": "/users.js?id=$id" },
+  ],
   "env": {
     "MONGODB_URI": "mongodb+srv://root:root@cluster0.d1imk.gcp.mongodb.net/test?retryWrites=true&w=majority"
   }
