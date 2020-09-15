@@ -36,26 +36,26 @@ module.exports = async (req, res) => {
 
   // Select the "users" collection from the database
   const collection = await db.collection('user')
-
-  const { end, order,sort,start } = req.query
-
-  let users = await collection.find({}).toArray();
   
+  let result;
+
   switch(req.method){
     case 'GET':
-        result = await collection.findOne({'_id' : req.query.id});
-        res.status(200).json(result);
+        result = await collection.findOne({id : req.query.id});
       break;
     case 'PUT':
-      result =  await collection.update({'_id' : req.query.id}, req.body);
-      res.redirect('/user')
+      result =  await collection.updateOne(
+        { id : req.query.id},
+        { $set: { name: req.body.name }},
+      );
       break;
     case 'DELETE':
-      result = await collection.insert(req.body)
-      res.redirect('/user')
+      result = await collection.remove({ id : req.query.id})
       break;
   }
 
   // Select the users collection from the database
   // Respond with a JSON string of all users in the collection
+  return res.status(200).json(result);
+
 }

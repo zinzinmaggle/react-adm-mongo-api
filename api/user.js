@@ -37,9 +37,13 @@ module.exports = async (req, res) => {
   // Select the "users" collection from the database
   const collection = await db.collection('user')
 
-  const { end, order,sort,start } = req.query
+  const { query : { _end, _order,_sort,_start } } = req
+  
 
-  let users = await collection.find({}).toArray();
+  let sortUser = {};
+  sortUser[_sort] = _order == 'ASC' ? 1 : -1;
+  console.log(sortUser);
+  let users = await collection.find({}).sort(sortUser).toArray();
   
   switch(req.method){
     case 'GET':
