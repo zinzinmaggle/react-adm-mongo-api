@@ -42,7 +42,6 @@ module.exports = async (req, res) => {
 
   let sortUser = {};
   sortUser[_sort] = _order == 'ASC' ? 1 : -1;
-  console.log(sortUser);
   let users = await collection.find({}).sort(sortUser).toArray();
   
   switch(req.method){

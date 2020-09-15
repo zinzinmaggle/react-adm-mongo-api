@@ -4,7 +4,7 @@ import { Create, SimpleForm, TextInput } from 'react-admin';
 import { List, Datagrid, TextField, EditButton } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 
-const dataProvider = jsonServerProvider('react-adm-mongo-api.vercel.app/api/');
+const dataProvider = jsonServerProvider('/api/');
 
 
 
