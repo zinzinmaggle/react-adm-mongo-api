@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Admin, Resource, ListGuesser } from 'react-admin'
+import { Admin, Resource, ListGuesser, EditGuesser } from 'react-admin'
 import { Create, SimpleForm, TextInput } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 
@@ -16,7 +16,7 @@ export const UserCreate = (props) => (
 
 const App = () => (
   <Admin dataProvider={dataProvider}>
-      <Resource name="users" create={UserCreate} list={ListGuesser} />
+      <Resource name="users" create={UserCreate} edit={EditGuesser} list={ListGuesser} />
   </Admin>
 );
 
