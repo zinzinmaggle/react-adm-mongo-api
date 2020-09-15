@@ -9,6 +9,7 @@ const dataProvider = jsonServerProvider('https://react-adm-mongo-api.vercel.app/
 export const UserCreate = (props) => (
   <Create {...props}>
       <SimpleForm>
+          <TextInput source="id" />
           <TextInput source="name" />
       </SimpleForm>
   </Create>
