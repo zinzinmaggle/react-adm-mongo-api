@@ -30,8 +30,6 @@ async function connectToDatabase(uri) {
 // dealing with the request and subsequent response
 module.exports = async (req, res) => {
 
-  console.log(req.method);
-
   // Get a database connection, cached or otherwise,
   // using the connection string environment variable as the argument
   const db = await connectToDatabase(process.env.MONGODB_URI)
@@ -41,9 +39,19 @@ module.exports = async (req, res) => {
 
   const { end = 'World', order='ASC',sort='id',start =''} = req.query
 
+  let users = await collection.find({}).toArray();
+  
+  switch(req.method){
+    case 'GET':
+      result =  users;
+      break;
+    case 'POST':
+      result = await collection.insert(req.body)
+      break;
+  }
+
   // Select the users collection from the database
-  const users = await collection.find({}).toArray()
   res.setHeader("x-total-count", users.length);
   // Respond with a JSON string of all users in the collection
-  res.status(200).json(users)
+  res.status(200).json(users);
 }
