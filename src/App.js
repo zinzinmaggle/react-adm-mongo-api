@@ -1,12 +1,22 @@
 import * as React from "react";
-import { Admin, Resource, ListGuesser } from 'react-admin';
+import { Admin, Resource, ListGuesser } from 'react-admin'
+import { Create, SimpleForm, TextInput } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 
 const dataProvider = jsonServerProvider('https://react-adm-mongo-api.vercel.app/api/');
 
+
+export const UserCreate = (props) => (
+  <Create {...props}>
+      <SimpleForm>
+          <TextInput source="name" />
+      </SimpleForm>
+  </Create>
+);
+
 const App = () => (
   <Admin dataProvider={dataProvider}>
-      <Resource name="users" list={ListGuesser} />
+      <Resource name="users" create={UserCreate} list={ListGuesser} />
   </Admin>
 );
 
