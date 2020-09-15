@@ -17,7 +17,7 @@ export const UserCreate = (props) => (
 
 const App = () => (
   <Admin dataProvider={dataProvider}>
-      <Resource name="users" create={UserCreate} edit={EditGuesser} list={ListGuesser} />
+      <Resource name="user" create={UserCreate} edit={EditGuesser} list={ListGuesser} />
   </Admin>
 );
 

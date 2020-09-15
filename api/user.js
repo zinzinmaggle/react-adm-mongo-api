@@ -35,7 +35,7 @@ module.exports = async (req, res) => {
   const db = await connectToDatabase(process.env.MONGODB_URI)
 
   // Select the "users" collection from the database
-  const collection = await db.collection('users')
+  const collection = await db.collection('user')
 
   const { end, order,sort,start } = req.query
 
