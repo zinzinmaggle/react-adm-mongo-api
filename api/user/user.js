@@ -53,8 +53,9 @@ module.exports = async (req, res) => {
       break;
   }
 
+  res.status(200).json(result)
+
+
   // Select the users collection from the database
-  res.setHeader("x-total-count", users.length);
   // Respond with a JSON string of all users in the collection
-  res.redirect('/user')
 }

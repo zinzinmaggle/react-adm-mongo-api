@@ -44,17 +44,8 @@ module.exports = async (req, res) => {
   switch(req.method){
     case 'GET':
       result =  users;
-      if(req.query.id){
-        result = await collection.findOne({id : req.query.id});
-      }
       break;
     case 'POST':
-      result = await collection.insert(req.body)
-      break;
-    case 'PUT':
-      result =  await collection.update({id : req.query.id},req.body);
-      break;
-    case 'DELETE':
       result = await collection.insert(req.body)
       break;
   }
