@@ -31,7 +31,6 @@ async function connectToDatabase(uri) {
 module.exports = async (req, res) => {
 
   console.log("requ : ", req);
-  console.log("response : ", res);
 
   // Get a database connection, cached or otherwise,
   // using the connection string environment variable as the argument
