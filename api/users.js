@@ -37,6 +37,8 @@ module.exports = async (req, res) => {
   // Select the "users" collection from the database
   const collection = await db.collection('users')
 
+  const { end, order,sort,start } = req.query
+
   let users = await collection.find({}).toArray();
   
   switch(req.method){
